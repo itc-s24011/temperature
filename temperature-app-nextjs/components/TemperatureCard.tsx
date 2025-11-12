@@ -16,7 +16,12 @@ const getTemperatureColor = (temp: number): string => {
 };
 
 const TemperatureCard: React.FC<TemperatureCardProps> = ({ data }) => {
-  const tempColor = getTemperatureColor(data.currentTemperature);
+  // カスタムフィールドからデータを取得（nullチェック付き）
+  const currentTemp = data.temperatureDetails?.currentTemperature ?? 0;
+  const high = data.temperatureDetails?.high ?? 0;
+  const low = data.temperatureDetails?.low ?? 0;
+  
+  const tempColor = getTemperatureColor(currentTemp);
 
   return (
     <Link href={`/temperature/${data.id}`} className={styles.card}>
@@ -26,10 +31,10 @@ const TemperatureCard: React.FC<TemperatureCardProps> = ({ data }) => {
         <h3 className={styles.city}>{data.city}</h3>
         <p className={styles.country}>{data.country}</p>
         <div className={`${styles.temperature} ${tempColor}`}>
-          {Math.round(data.currentTemperature)}°
+          {Math.round(currentTemp)}°
         </div>
         <p className={styles.range}>
-          H: {Math.round(data.high)}° / L: {Math.round(data.low)}°
+          H: {Math.round(high)}° / L: {Math.round(low)}°
         </p>
       </div>
     </Link>

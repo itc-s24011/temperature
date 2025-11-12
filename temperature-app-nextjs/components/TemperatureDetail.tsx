@@ -17,7 +17,17 @@ const getTemperatureColor = (temp: number): string => {
 };
 
 const TemperatureDetail: React.FC<TemperatureDetailProps> = ({ data }) => {
-  const tempColor = getTemperatureColor(data.currentTemperature);
+  // カスタムフィールドからデータを取得（nullチェック付き）
+  const currentTemperature = data.temperatureDetails?.currentTemperature ?? 0;
+  const feelsLike = data.temperatureDetails?.feelsLike ?? 0;
+  const high = data.temperatureDetails?.high ?? 0;
+  const low = data.temperatureDetails?.low ?? 0;
+  
+  const sunrise = data.sunData?.sunrise ?? '---';
+  const sunset = data.sunData?.sunset ?? '---';
+  const timezone = data.sunData?.timezone ?? '---';
+  
+  const tempColor = getTemperatureColor(currentTemperature);
 
   return (
     <div className={styles.container}>
@@ -27,10 +37,10 @@ const TemperatureDetail: React.FC<TemperatureDetailProps> = ({ data }) => {
           <h1 className={styles.city}>{data.city}</h1>
           <p className={styles.country}>{data.country}</p>
           <div className={`${styles.currentTemp} ${tempColor}`}>
-            {Math.round(data.currentTemperature)}°
+            {Math.round(currentTemperature)}°
           </div>
           <p className={styles.feelsLike}>
-            体感温度: {Math.round(data.feelsLike)}°C
+            体感温度: {Math.round(feelsLike)}°C
           </p>
         </div>
 
@@ -40,7 +50,7 @@ const TemperatureDetail: React.FC<TemperatureDetailProps> = ({ data }) => {
             <div>
               <p className={styles.label}>最高 / 最低</p>
               <p className={styles.value}>
-                {Math.round(data.high)}° / {Math.round(data.low)}°
+                {Math.round(high)}° / {Math.round(low)}°
               </p>
             </div>
           </div>
@@ -65,7 +75,7 @@ const TemperatureDetail: React.FC<TemperatureDetailProps> = ({ data }) => {
             <SunriseIcon />
             <div>
               <p className={styles.label}>日の出</p>
-              <p className={styles.value}>{data.sunrise}</p>
+              <p className={styles.value}>{sunrise}</p>
             </div>
           </div>
 
@@ -73,7 +83,7 @@ const TemperatureDetail: React.FC<TemperatureDetailProps> = ({ data }) => {
             <SunsetIcon />
             <div>
               <p className={styles.label}>日の入り</p>
-              <p className={styles.value}>{data.sunset}</p>
+              <p className={styles.value}>{sunset}</p>
             </div>
           </div>
         </div>
@@ -82,7 +92,7 @@ const TemperatureDetail: React.FC<TemperatureDetailProps> = ({ data }) => {
       <div className={styles.weeklySection}>
         <h2 className={styles.weeklyTitle}>📅 週間予報</h2>
         <div className={styles.weeklyGrid}>
-          {data.weeklyData.map((day, index) => (
+          {data.weeklyData?.map((day, index) => (
             <div key={index} className={styles.dayCard}>
               <div className={styles.dayDate}>{day.date}</div>
               <div className={styles.dayTemps}>
@@ -96,6 +106,10 @@ const TemperatureDetail: React.FC<TemperatureDetailProps> = ({ data }) => {
             </div>
           ))}
         </div>
+      </div>
+
+      <div className={styles.timezone}>
+        <p>🌍 タイムゾーン: {timezone}</p>
       </div>
     </div>
   );

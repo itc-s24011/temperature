@@ -2,6 +2,7 @@
 import { createClient } from 'microcms-js-sdk';
 import { TemperatureData } from '@/types/temperature';
 
+// 環境変数のチェック
 if (!process.env.MICROCMS_SERVICE_DOMAIN) {
   throw new Error('MICROCMS_SERVICE_DOMAIN is required');
 }

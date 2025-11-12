@@ -28,9 +28,10 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps) {
   try {
     const temperature = await getTemperatureDetail(params.id);
+    const currentTemp = temperature.temperatureDetails?.currentTemperature ?? 0;
     return {
       title: `${temperature.city}, ${temperature.country} - 気温情報`,
-      description: `${temperature.city}の現在の気温は${Math.round(temperature.currentTemperature)}°Cです。`,
+      description: `${temperature.city}の現在の気温は${Math.round(currentTemp)}°Cです。`,
     };
   } catch (error) {
     return {

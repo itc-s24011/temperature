@@ -6,19 +6,27 @@ export interface DailyData {
   precipitation: number;
 }
 
-export interface TemperatureData {
-  id: string;
-  city: string;
-  country: string;
+export interface TemperatureDetails {
   currentTemperature: number;
   feelsLike: number;
   high: number;
   low: number;
-  humidity: number;
-  pressure: number;
+}
+
+export interface SunData {
   sunrise: string;
   sunset: string;
   timezone: string;
+}
+
+export interface TemperatureData {
+  id: string;
+  city: string;
+  country: string;
+  temperatureDetails: TemperatureDetails;
+  humidity: number;
+  pressure: number;
+  sunData: SunData;
   weeklyData: DailyData[];
   updatedAt: string;
 }
