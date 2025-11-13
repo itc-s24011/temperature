@@ -6,27 +6,26 @@ export interface DailyData {
   precipitation: number;
 }
 
-export interface TemperatureDetails {
-  currentTemperature: number;
-  feelsLike: number;
-  high: number;
-  low: number;
-}
-
-export interface SunData {
-  sunrise: string;
-  sunset: string;
-  timezone: string;
+export interface MicroCMSTemperatureItem {
+  id: string;
+  city: string;
+  country?: string;
+  updatedAt?: string;
 }
 
 export interface TemperatureData {
   id: string;
   city: string;
   country: string;
-  temperatureDetails: TemperatureDetails;
+  currentTemperature: number;
+  feelsLike: number;
+  high: number;
+  low: number;
   humidity: number;
   pressure: number;
-  sunData: SunData;
+  sunrise: string;
+  sunset: string;
+  timezone: string;
   weeklyData: DailyData[];
   updatedAt: string;
 }
