@@ -9,10 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tailwindcss/postcss": "^4.1.17",
+    "microcms-js-sdk": "^3.1.2",
     "next": "14.2.0",
     "react": "^18",
-    "react-dom": "^18",
-    "microcms-js-sdk": "^3.1.2"
+    "react-dom": "^18"
   },
   "devDependencies": {
     "@types/node": "^20",
