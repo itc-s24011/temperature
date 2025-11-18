@@ -17,15 +17,15 @@ const getTemperatureColor = (temp: number): string => {
 };
 
 const TemperatureDetail: React.FC<TemperatureDetailProps> = ({ data }) => {
-  // カスタムフィールドからデータを取得（nullチェック付き）
-  const currentTemperature = data.temperatureDetails?.currentTemperature ?? 0;
-  const feelsLike = data.temperatureDetails?.feelsLike ?? 0;
-  const high = data.temperatureDetails?.high ?? 0;
-  const low = data.temperatureDetails?.low ?? 0;
+  // データを取得（nullチェック付き）
+  const currentTemperature = data.currentTemperature ?? 0;
+  const feelsLike = data.feelsLike ?? 0;
+  const high = data.high ?? 0;
+  const low = data.low ?? 0;
   
-  const sunrise = data.sunData?.sunrise ?? '---';
-  const sunset = data.sunData?.sunset ?? '---';
-  const timezone = data.sunData?.timezone ?? '---';
+  const sunrise = data.sunrise ?? '---';
+  const sunset = data.sunset ?? '---';
+  const timezone = data.timezone ?? '---';
   
   const tempColor = getTemperatureColor(currentTemperature);
 

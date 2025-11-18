@@ -16,10 +16,10 @@ const getTemperatureColor = (temp: number): string => {
 };
 
 const TemperatureCard: React.FC<TemperatureCardProps> = ({ data }) => {
-  // カスタムフィールドからデータを取得（nullチェック付き）
-  const currentTemp = data.temperatureDetails?.currentTemperature ?? 0;
-  const high = data.temperatureDetails?.high ?? 0;
-  const low = data.temperatureDetails?.low ?? 0;
+  // データを取得（nullチェック付き）
+  const currentTemp = data.currentTemperature ?? 0;
+  const high = data.high ?? 0;
+  const low = data.low ?? 0;
   
   const tempColor = getTemperatureColor(currentTemp);
 

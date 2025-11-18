@@ -20,7 +20,7 @@ export async function generateStaticParams() {
     return temperatureList.map((temperature) => ({
       id: temperature.id,
     }));
-  } catch (error) {
+  } catch {
     return [];
   }
 }
@@ -28,12 +28,12 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps) {
   try {
     const temperature = await getTemperatureDetail(params.id);
-    const currentTemp = temperature.temperatureDetails?.currentTemperature ?? 0;
+    const currentTemp = temperature.currentTemperature ?? 0;
     return {
       title: `${temperature.city}, ${temperature.country} - 気温情報`,
       description: `${temperature.city}の現在の気温は${Math.round(currentTemp)}°Cです。`,
     };
-  } catch (error) {
+  } catch {
     return {
       title: '気温情報が見つかりません',
     };
