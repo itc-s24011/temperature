@@ -150,22 +150,22 @@ components/
 ├── Header.tsx
 ├── TemperatureCard.tsx
 ├── TemperatureDetail.tsx
-├── TemperatureRanking.tsx ⭐ NEW
-├── SearchBar.tsx ⭐ NEW
-├── ClientSearchBar.tsx ⭐ NEW
-├── ThemeToggle.tsx ⭐ NEW
-├── BackgroundRefresh.tsx ⭐ NEW
-├── FavoriteButton.tsx ⭐ NEW
-├── AlertSettings.tsx ⭐ NEW
-├── BackgroundInitializer.tsx ⭐ NEW
+├── TemperatureRanking.tsx
+├── SearchBar.tsx
+├── ClientSearchBar.tsx
+├── ThemeToggle.tsx
+├── BackgroundRefresh.tsx
+├── FavoriteButton.tsx
+├── AlertSettings.tsx
+├── BackgroundInitializer.tsx
 ├── LoadingSpinner.tsx
 └── IconComponents.tsx
 
 lib/
 ├── microcms.ts
 ├── openMeteo.ts
-├── contexts.tsx ⭐ NEW
-└── gradients.ts ⭐ NEW
+├── contexts.tsx
+└── gradients.ts
 
 types/
 └── temperature.ts
